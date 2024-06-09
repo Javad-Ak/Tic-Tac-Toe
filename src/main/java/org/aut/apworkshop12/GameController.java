@@ -1,10 +1,14 @@
 package org.aut.apworkshop12;
 
-import javafx.event.ActionEvent;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 
 public class GameController {
 
@@ -20,6 +24,15 @@ public class GameController {
             if (newValue) MusicPlayer.play();
             else MusicPlayer.pause();
         });
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(timeBar.progressProperty(), 0)),
+                new KeyFrame(Duration.minutes(1), e -> {
+                    MenuController.setGameOver(GameModel.WinState.DRAW);
+                }, new KeyValue(timeBar.progressProperty(), 1))
+        );
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     @FXML

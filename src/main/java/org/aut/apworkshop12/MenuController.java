@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 
 public class MenuController {
-    private static Boolean isWinner = null;
+    private static GameModel.WinState winState = null;
 
     @FXML
     private Label gameoverLabel;
@@ -19,12 +19,14 @@ public class MenuController {
     public void initialize() {
         MusicPlayer.play();
 
-        if (isWinner == null)
+        if (winState == null)
             gameoverLabel.setText("");
-        else if (isWinner)
+        else if (winState == GameModel.WinState.WON)
             gameoverLabel.setText("You won, " + LoginController.getUsername() + ".");
-        else
+        else if (winState == GameModel.WinState.LOST)
             gameoverLabel.setText("You lost, " + LoginController.getUsername() + ".");
+        else
+            gameoverLabel.setText("Draw: Time up, " + LoginController.getUsername() + ".");
 
         soundToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) MusicPlayer.play();
@@ -45,8 +47,8 @@ public class MenuController {
             XOApplication.setScene(XOApplication.SceneLevel.GAME);
     }
 
-    public static void setGameOver(boolean isWinner) {
-        MenuController.isWinner = isWinner;
+    public static void setGameOver(GameModel.WinState winState) {
+        MenuController.winState = winState;
         XOApplication.setScene(XOApplication.SceneLevel.MENU);
     }
 }
