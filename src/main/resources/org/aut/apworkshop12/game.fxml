@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ToggleButton?>
@@ -10,8 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" hgap="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="400.0" vgap="14.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" hgap="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="400.0" vgap="14.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aut.apworkshop12.GameController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="50.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="50.0" />
@@ -19,26 +19,21 @@
     </columnConstraints>
     <rowConstraints>
         <RowConstraints percentHeight="12.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints percentHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints percentHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
         <RowConstraints percentHeight="50.0" vgrow="SOMETIMES" />
         <RowConstraints percentHeight="12.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <VBox alignment="BOTTOM_LEFT" GridPane.columnSpan="2" GridPane.rowIndex="4">
+        <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <children>
-                <Hyperlink text="By @Mohammad_Javad_Akbari" textAlignment="CENTER" underline="true" />
-            </children>
-        </VBox>
-        <VBox alignment="BOTTOM_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
-            <children>
-                <ToggleButton mnemonicParsing="false" selected="true" text="Sound" />
+                <ToggleButton mnemonicParsing="false" onAction="#soundPressed" selected="true" text="Sound" />
             </children>
         </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="3">
          <children>
             <Label text="Timer:" />
-            <ProgressBar prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="timeBar" prefWidth="200.0" progress="0.0" />
          </children>
       </HBox>
       <GridPane gridLinesVisible="true" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
@@ -53,15 +48,105 @@
             <RowConstraints percentHeight="50.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" />
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" />
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" />
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" />
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <VBox alignment="CENTER" onMousePressed="#pressed00" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+               <children>
+                  <Label>
+                     <font>
+                        <Font size="100.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <VBox alignment="CENTER" onMousePressed="#pressed10" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+               <children>
+                  <Label>
+                     <font>
+                        <Font size="100.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <VBox alignment="CENTER" onMousePressed="#pressed20" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+               <children>
+                  <Label>
+                     <font>
+                        <Font size="100.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <VBox alignment="CENTER" onMousePressed="#pressed01" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+               <children>
+                  <Label>
+                     <font>
+                        <Font size="100.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <VBox alignment="CENTER" onMousePressed="#pressed11" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+               <children>
+                  <Label>
+                     <font>
+                        <Font size="100.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <VBox alignment="CENTER" onMousePressed="#pressed21" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+               <children>
+                  <Label>
+                     <font>
+                        <Font size="100.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <VBox alignment="CENTER" onMousePressed="#pressed02" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+               <children>
+                  <Label>
+                     <font>
+                        <Font size="100.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <VBox alignment="CENTER" onMousePressed="#pressed12" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+               <children>
+                  <Label>
+                     <font>
+                        <Font size="100.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <VBox alignment="CENTER" onMousePressed="#pressed22" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+               <children>
+                  <Label>
+                     <font>
+                        <Font size="100.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
          </children>
       </GridPane>
     </children>
