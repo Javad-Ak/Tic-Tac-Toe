@@ -5,6 +5,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
@@ -17,6 +18,33 @@ public class GameController {
 
     @FXML
     private ToggleButton soundToggle;
+
+    @FXML
+    private Label label00;
+
+    @FXML
+    private Label label01;
+
+    @FXML
+    private Label label02;
+
+    @FXML
+    private Label label10;
+
+    @FXML
+    private Label label11;
+
+    @FXML
+    private Label label12;
+
+    @FXML
+    private Label label20;
+
+    @FXML
+    private Label label21;
+
+    @FXML
+    private Label label22;
 
     @FXML
     public void initialize() {

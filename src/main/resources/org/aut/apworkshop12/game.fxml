@@ -56,7 +56,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label>
+                  <Label fx:id="label00">
                      <font>
                         <Font size="100.0" />
                      </font>
@@ -67,7 +67,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label>
+                  <Label fx:id="label10">
                      <font>
                         <Font size="100.0" />
                      </font>
@@ -78,7 +78,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label>
+                  <Label fx:id="label20">
                      <font>
                         <Font size="100.0" />
                      </font>
@@ -89,7 +89,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label>
+                  <Label fx:id="label01">
                      <font>
                         <Font size="100.0" />
                      </font>
@@ -100,7 +100,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label>
+                  <Label fx:id="label11">
                      <font>
                         <Font size="100.0" />
                      </font>
@@ -111,7 +111,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label>
+                  <Label fx:id="label21">
                      <font>
                         <Font size="100.0" />
                      </font>
@@ -122,7 +122,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label>
+                  <Label fx:id="label02">
                      <font>
                         <Font size="100.0" />
                      </font>
@@ -133,7 +133,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label>
+                  <Label fx:id="label12">
                      <font>
                         <Font size="100.0" />
                      </font>
@@ -144,7 +144,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label>
+                  <Label fx:id="label22">
                      <font>
                         <Font size="100.0" />
                      </font>
