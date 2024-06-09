@@ -15,6 +15,14 @@ public class GameController {
     private ToggleButton soundToggle;
 
     @FXML
+    public void initialize() {
+        soundToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) MusicPlayer.play();
+            else MusicPlayer.pause();
+        });
+    }
+
+    @FXML
     void pressed00(MouseEvent event) {
 
     }

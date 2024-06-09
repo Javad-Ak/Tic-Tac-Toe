@@ -39,9 +39,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.gluonhq</groupId>
-            <artifactId>charm-glisten</artifactId>
-            <version>6.2.3</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>22.0.1</version>
         </dependency>
     </dependencies>
 
