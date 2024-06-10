@@ -52,7 +52,7 @@ public class MenuController {
         else if (state == GameModel.WinState.LOST)
             winState.setValue("You lost, " + LoginController.getUsername() + ".");
         else
-            winState.setValue("Draw: Time up, " + LoginController.getUsername() + ".");
+            winState.setValue("You draw, " + LoginController.getUsername() + ".");
 
         XOApplication.switchScene(XOApplication.SceneLevel.MENU);
     }

@@ -84,40 +84,39 @@ public class GameModel {
             if (board[i][0].get().equals("X") && board[i][1].get().equals("X") && board[i][2].get().equals("X")) {
                 return WinState.WON;
             }
-
-            if (board[0][i].get().equals("X") && board[1][i].get().equals("X") && board[2][i].get().equals("X")) {
-                return WinState.WON;
-            }
-
-            if (board[0][0].get().equals("X") && board[1][1].get().equals("X") && board[2][2].get().equals("X")) {
-                return WinState.WON;
-            }
-
-            if (board[2][0].get().equals("X") && board[1][1].get().equals("X") && board[0][2].get().equals("X")) {
-                return WinState.WON;
-            }
-
             if (board[i][0].get().equals("O") && board[i][1].get().equals("O") && board[i][2].get().equals("O")) {
                 return WinState.LOST;
             }
-
+        }
+        for (int i = 0; i < board.length; i++) {
             if (board[0][i].get().equals("O") && board[1][i].get().equals("O") && board[2][i].get().equals("O")) {
                 return WinState.LOST;
             }
-
-            if (board[0][0].get().equals("O") && board[1][1].get().equals("O") && board[2][2].get().equals("O")) {
-                return WinState.LOST;
+            if (board[0][i].get().equals("X") && board[1][i].get().equals("X") && board[2][i].get().equals("X")) {
+                return WinState.WON;
             }
+        }
 
-            if (board[2][0].get().equals("O") && board[1][1].get().equals("O") && board[0][2].get().equals("O")) {
-                return WinState.LOST;
-            }
+        if (board[0][0].get().equals("X") && board[1][1].get().equals("X") && board[2][2].get().equals("X")) {
+            return WinState.WON;
+        }
+        if (board[2][0].get().equals("X") && board[1][1].get().equals("X") && board[0][2].get().equals("X")) {
+            return WinState.WON;
+        }
 
+
+        if (board[0][0].get().equals("O") && board[1][1].get().equals("O") && board[2][2].get().equals("O")) {
+            return WinState.LOST;
+        }
+        if (board[2][0].get().equals("O") && board[1][1].get().equals("O") && board[0][2].get().equals("O")) {
+            return WinState.LOST;
+        }
+
+        for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j].get().isEmpty()) return null;
             }
         }
-
         return WinState.DRAW;
     }
 

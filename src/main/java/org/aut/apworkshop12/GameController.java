@@ -4,6 +4,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
@@ -153,6 +154,11 @@ public class GameController {
 
     public static void endGame(GameModel.WinState state) {
         isGameStarted.setValue(false);
-        MenuController.setGameOver(state);
+        Platform.runLater(() -> {
+            try {
+                Thread.sleep(400); // better visibility
+            } catch (InterruptedException ignored) {
+            }
+            MenuController.setGameOver(state);});
     }
 }
