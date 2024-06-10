@@ -61,17 +61,6 @@ public class GameController {
     }
 
     public void setUp() {
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.ZERO, new KeyValue(timeBar.progressProperty(), 0)), // -> first frame
-                new KeyFrame(// -> last frame
-                        Duration.minutes(1)
-                        , e -> MenuController.setGameOver(GameModel.WinState.DRAW)
-                        , new KeyValue(timeBar.progressProperty(), 1))
-        );
-        timeline.setAutoReverse(false);
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
-
         labels = new Label[][]{{label00, label01, label02}, {label10, label11, label12}, {label20, label21, label22}};
         gameModel = new GameModel();
         for (int i = 0; i < labels.length; i++) {
@@ -83,6 +72,17 @@ public class GameController {
         gameModel.getGameOverProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) MenuController.setGameOver(gameModel.getWinState());
         });
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(timeBar.progressProperty(), 0)), // -> first frame
+                new KeyFrame(// -> last frame
+                        Duration.minutes(1)
+                        , e -> gameModel.timeUp()
+                        , new KeyValue(timeBar.progressProperty(), 1))
+        );
+        timeline.setAutoReverse(false);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     @FXML

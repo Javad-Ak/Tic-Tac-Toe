@@ -71,6 +71,11 @@ public class GameModel {
         if (winState != null) isGameOver.set(true);
     }
 
+    public void timeUp(){
+        winState = WinState.DRAW;
+        isGameOver.set(true);
+    }
+
     public boolean isPlayerTurn() {
         return isPlayerTurn;
     }
