@@ -15,7 +15,7 @@ public class XOApplication extends Application {
 
     private static Stage primaryStage;
 
-    enum SceneLevel {
+    public enum SceneLevel {
         MENU, LOGIN, GAME
     }
 
@@ -25,9 +25,9 @@ public class XOApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        menuScene = new Scene(new FXMLLoader(XOApplication.class.getResource("menu.fxml")).load());
-        loginScene = new Scene(new FXMLLoader(XOApplication.class.getResource("login.fxml")).load());
-        gameScene = new Scene(new FXMLLoader(XOApplication.class.getResource("game.fxml")).load());
+        menuScene = new Scene(new FXMLLoader(XOApplication.class.getResource("view/menu.fxml")).load());
+        loginScene = new Scene(new FXMLLoader(XOApplication.class.getResource("view/login.fxml")).load());
+        gameScene = new Scene(new FXMLLoader(XOApplication.class.getResource("view/game.fxml")).load());
 
         primaryStage = stage;
         switchScene(SceneLevel.MENU);
@@ -37,7 +37,7 @@ public class XOApplication extends Application {
         primaryStage.show();
     }
 
-    static void switchScene(SceneLevel level) {
+    public static void switchScene(SceneLevel level) {
         try {
             if (primaryStage == null || menuScene == null || gameScene == null || loginScene == null)
                 throw new IllegalStateException();

@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane hgap="14.0" prefHeight="500.0" prefWidth="400.0" vgap="14.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aut.apworkshop12.LoginController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<GridPane hgap="14.0" prefHeight="500.0" prefWidth="400.0" stylesheets="@style.css" vgap="14.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aut.apworkshop12.Controllers.LoginController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
         <ColumnConstraints hgrow="SOMETIMES" percentWidth="60.0" />
@@ -26,10 +21,20 @@
     <children>
         <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <children>
-                <ToggleButton fx:id="soundToggle" mnemonicParsing="false" selected="true" text="Sound">
-               <font>
-                  <Font size="14.0" />
-               </font></ToggleButton>
+                <ToggleButton fx:id="soundToggle" mnemonicParsing="false" selected="true">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <graphic>
+                        <ImageView blendMode="DARKEN" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <viewport>
+                                <Rectangle2D />
+                            </viewport>
+                            <image>
+                                <Image url="@../volume.jpg" />
+                            </image>
+                        </ImageView>
+                    </graphic></ToggleButton>
             </children>
         </VBox>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3">
@@ -43,7 +48,10 @@
         </HBox>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <children>
-            <Label text="Enter a username:" />
+            <Label text="Enter a username:">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
             <TextField fx:id="usernameLabel" />
                 <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playPressed" text="Play" />
             </children>

@@ -1,4 +1,4 @@
-package org.aut.apworkshop12;
+package org.aut.apworkshop12.Controllers;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -13,6 +13,12 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import org.aut.apworkshop12.utils.GameModel;
+import org.aut.apworkshop12.utils.MusicPlayer;
+import org.aut.apworkshop12.XOApplication;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GameController {
     @FXML
@@ -56,16 +62,13 @@ public class GameController {
 
     @FXML
     public void initialize() {
+        MusicPlayer.addToggle(soundToggle);
+
         isGameStarted = new SimpleBooleanProperty(false);
         labels = new Label[][]{{label00, label01, label02}, {label10, label11, label12}, {label20, label21, label22}};
 
         isGameStarted.addListener((observable, oldValue, newValue) -> {
             if (newValue) setUp();
-        });
-
-        soundToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) MusicPlayer.play();
-            else MusicPlayer.pause();
         });
     }
 
@@ -154,11 +157,17 @@ public class GameController {
 
     public static void endGame(GameModel.WinState state) {
         isGameStarted.setValue(false);
-        Platform.runLater(() -> {
-            try {
-                Thread.sleep(400); // better visibility
-            } catch (InterruptedException ignored) {
+
+        TimerTask task = new TimerTask() {
+            public void run() {
+                Platform.runLater(() -> MenuController.setGameOver(state));
             }
-            MenuController.setGameOver(state);});
+        };
+        Timer timer = new Timer();
+
+        if (state == GameModel.WinState.DRAW)
+            timer.schedule(task, 0);
+        else
+            timer.schedule(task, 800);
     }
 }

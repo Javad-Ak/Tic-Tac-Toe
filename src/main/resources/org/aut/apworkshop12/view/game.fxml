@@ -5,7 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane alignment="CENTER" hgap="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="400.0" vgap="14.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aut.apworkshop12.GameController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<GridPane stylesheets="@style.css" alignment="CENTER" hgap="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="400.0" vgap="14.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aut.apworkshop12.Controllers.GameController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="50.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="50.0" />
@@ -21,10 +23,20 @@
     <children>
         <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <children>
-                <ToggleButton fx:id="soundToggle" mnemonicParsing="false" selected="true" text="Sound">
-               <font>
-                  <Font size="14.0" />
-               </font></ToggleButton>
+                <ToggleButton fx:id="soundToggle" mnemonicParsing="false" selected="true">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <graphic>
+                        <ImageView blendMode="DARKEN" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <viewport>
+                                <Rectangle2D />
+                            </viewport>
+                            <image>
+                                <Image url="@../volume.jpg" />
+                            </image>
+                        </ImageView>
+                    </graphic></ToggleButton>
             </children>
         </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="3">

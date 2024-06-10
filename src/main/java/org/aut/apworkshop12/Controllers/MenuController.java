@@ -1,4 +1,4 @@
-package org.aut.apworkshop12;
+package org.aut.apworkshop12.Controllers;
 
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -7,6 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import org.aut.apworkshop12.utils.GameModel;
+import org.aut.apworkshop12.utils.MusicPlayer;
+import org.aut.apworkshop12.XOApplication;
 
 public class MenuController {
     private static StringProperty winState;
@@ -19,16 +22,13 @@ public class MenuController {
 
     @FXML
     public void initialize() {
-        MusicPlayer.play();
+        soundToggle.setSelected(false);
+        MusicPlayer.addToggle(soundToggle);
+        soundToggle.setSelected(true);
 
         winState = new SimpleStringProperty();
         winState.setValue("");
         gameoverLabel.textProperty().bind(winState);
-
-        soundToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) MusicPlayer.play();
-            else MusicPlayer.pause();
-        });
     }
 
     @FXML

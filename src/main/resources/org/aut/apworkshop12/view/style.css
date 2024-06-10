@@ -1,0 +1,59 @@
+.root {
+    -fx-background: #263238;
+}
+
+.label {
+    -fx-text-fill: #AFEEEE;
+}
+
+.button {
+    -fx-background-color: linear-gradient(#37474F, #102027);
+    -fx-text-fill: #CFD8DC;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#455A64, #1C313A);
+}
+
+.toggle-button {
+    -fx-background-color: linear-gradient(#37474F, #102027);
+    -fx-text-fill: #CFD8DC;
+}
+
+.toggle-button:selected {
+    -fx-background-color: linear-gradient(#26A69A, #00796B);
+}
+
+.toggle-button:hover {
+    -fx-background-color: linear-gradient(#4DB6AC, #00897B);
+}
+
+/* ProgressBar styling */
+.progress-bar {
+    -fx-background-color: #2E3C43;
+    -fx-padding: 5;
+}
+
+.progress-bar .bar {
+    -fx-background-color: linear-gradient(#4DB6AC, #00897B);
+}
+
+.progress-bar .track {
+    -fx-background-color: #37474F;
+}
+
+/* TextField styling */
+.text-field {
+    -fx-background-color: #2E3C43;
+    -fx-text-fill: #CFD8DC;
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+    -fx-border-color: #4DB6AC;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.text-field:focused {
+    -fx-border-color: #80CBC4;
+}
+

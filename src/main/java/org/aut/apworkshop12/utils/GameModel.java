@@ -1,4 +1,4 @@
-package org.aut.apworkshop12;
+package org.aut.apworkshop12.utils;
 
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
@@ -82,33 +82,41 @@ public class GameModel {
     private WinState getGameOverState() {
         for (int i = 0; i < board.length; i++) {
             if (board[i][0].get().equals("X") && board[i][1].get().equals("X") && board[i][2].get().equals("X")) {
+                chaneBoard(i, 0, i, 1, i, 2);
                 return WinState.WON;
             }
             if (board[i][0].get().equals("O") && board[i][1].get().equals("O") && board[i][2].get().equals("O")) {
+                chaneBoard(i, 0, i, 1, i, 2);
                 return WinState.LOST;
             }
         }
         for (int i = 0; i < board.length; i++) {
             if (board[0][i].get().equals("O") && board[1][i].get().equals("O") && board[2][i].get().equals("O")) {
+                chaneBoard(0, i, 1, i, 2, i);
                 return WinState.LOST;
             }
             if (board[0][i].get().equals("X") && board[1][i].get().equals("X") && board[2][i].get().equals("X")) {
+                chaneBoard(0, i, 1, i, 2, i);
                 return WinState.WON;
             }
         }
 
         if (board[0][0].get().equals("X") && board[1][1].get().equals("X") && board[2][2].get().equals("X")) {
+            chaneBoard(0, 0, 1, 1, 2, 2);
             return WinState.WON;
         }
         if (board[2][0].get().equals("X") && board[1][1].get().equals("X") && board[0][2].get().equals("X")) {
+            chaneBoard(2,0,1,1,0,2);
             return WinState.WON;
         }
 
 
         if (board[0][0].get().equals("O") && board[1][1].get().equals("O") && board[2][2].get().equals("O")) {
+            chaneBoard(0, 0, 1, 1, 2, 2);
             return WinState.LOST;
         }
         if (board[2][0].get().equals("O") && board[1][1].get().equals("O") && board[0][2].get().equals("O")) {
+            chaneBoard(2,0,1,1,0,2);
             return WinState.LOST;
         }
 
@@ -126,5 +134,11 @@ public class GameModel {
 
     public WinState getWinState() {
         return winState;
+    }
+
+    private void chaneBoard(int x1, int y1, int x2, int y2, int x3, int y3) {
+        board[x1][y1].set("T");
+        board[x2][y2].set("T");
+        board[x3][y3].set("T");
     }
 }

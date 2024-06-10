@@ -1,9 +1,10 @@
-package org.aut.apworkshop12;
+package org.aut.apworkshop12.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import org.aut.apworkshop12.utils.MusicPlayer;
 
 public class LoginController {
     private static String username = null;
@@ -16,10 +17,7 @@ public class LoginController {
 
     @FXML
     public void initialize() {
-        soundToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) MusicPlayer.play();
-            else MusicPlayer.pause();
-        });
+        MusicPlayer.addToggle(soundToggle);
     }
 
     @FXML
