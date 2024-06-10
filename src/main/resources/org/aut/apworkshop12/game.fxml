@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane alignment="CENTER" hgap="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="400.0" vgap="14.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aut.apworkshop12.GameController">
+<GridPane alignment="CENTER" hgap="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="400.0" vgap="14.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aut.apworkshop12.GameController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="50.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="50.0" />
@@ -35,7 +29,10 @@
         </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="3">
          <children>
-            <Label text="Timer:" />
+            <Label text="Timer:">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
             <ProgressBar fx:id="timeBar" prefWidth="200.0" progress="0.0" />
          </children>
       </HBox>
@@ -56,99 +53,63 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label fx:id="label00">
-                     <font>
-                        <Font size="100.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="label00" />
                </children></VBox>
             <VBox alignment="CENTER" onMousePressed="#pressed10" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label fx:id="label10">
-                     <font>
-                        <Font size="100.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="label10" />
                </children></VBox>
             <VBox alignment="CENTER" onMousePressed="#pressed20" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label fx:id="label20">
-                     <font>
-                        <Font size="100.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="label20" />
                </children></VBox>
             <VBox alignment="CENTER" onMousePressed="#pressed01" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label fx:id="label01">
-                     <font>
-                        <Font size="100.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="label01" />
                </children></VBox>
             <VBox alignment="CENTER" onMousePressed="#pressed11" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label fx:id="label11">
-                     <font>
-                        <Font size="100.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="label11" />
                </children></VBox>
             <VBox alignment="CENTER" onMousePressed="#pressed21" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label fx:id="label21">
-                     <font>
-                        <Font size="100.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="label21" />
                </children></VBox>
             <VBox alignment="CENTER" onMousePressed="#pressed02" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label fx:id="label02">
-                     <font>
-                        <Font size="100.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="label02" />
                </children></VBox>
             <VBox alignment="CENTER" onMousePressed="#pressed12" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label fx:id="label12">
-                     <font>
-                        <Font size="100.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="label12" />
                </children></VBox>
             <VBox alignment="CENTER" onMousePressed="#pressed22" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
                <children>
-                  <Label fx:id="label22">
-                     <font>
-                        <Font size="100.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="label22" />
                </children></VBox>
          </children>
       </GridPane>

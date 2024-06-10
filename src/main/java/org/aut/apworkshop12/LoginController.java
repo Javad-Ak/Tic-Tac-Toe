@@ -33,7 +33,7 @@ public class LoginController {
             return;
         }
 
-        XOApplication.setScene(XOApplication.SceneLevel.GAME);
+        GameController.startGame();
     }
 
     public static String getUsername() {

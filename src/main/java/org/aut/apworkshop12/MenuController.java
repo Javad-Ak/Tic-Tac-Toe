@@ -1,13 +1,15 @@
 package org.aut.apworkshop12;
 
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 
 public class MenuController {
-    private static GameModel.WinState winState = null;
+    private static StringProperty winState;
 
     @FXML
     private Label gameoverLabel;
@@ -19,14 +21,9 @@ public class MenuController {
     public void initialize() {
         MusicPlayer.play();
 
-        if (winState == null)
-            gameoverLabel.setText("");
-        else if (winState == GameModel.WinState.WON)
-            gameoverLabel.setText("You won, " + LoginController.getUsername() + ".");
-        else if (winState == GameModel.WinState.LOST)
-            gameoverLabel.setText("You lost, " + LoginController.getUsername() + ".");
-        else
-            gameoverLabel.setText("Draw: Time up, " + LoginController.getUsername() + ".");
+        winState = new SimpleStringProperty();
+        winState.setValue("");
+        gameoverLabel.textProperty().bind(winState);
 
         soundToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) MusicPlayer.play();
@@ -42,13 +39,21 @@ public class MenuController {
     @FXML
     void startPressed(ActionEvent event) {
         if (LoginController.getUsername() == null)
-            XOApplication.setScene(XOApplication.SceneLevel.LOGIN);
+            XOApplication.switchScene(XOApplication.SceneLevel.LOGIN);
         else
-            XOApplication.setScene(XOApplication.SceneLevel.GAME);
+            GameController.startGame();
     }
 
-    public static void setGameOver(GameModel.WinState winState) {
-        MenuController.winState = winState;
-        XOApplication.setScene(XOApplication.SceneLevel.MENU);
+    public static void setGameOver(GameModel.WinState state) {
+        if (state == null)
+            winState.setValue("");
+        else if (state == GameModel.WinState.WON)
+            winState.setValue("You won, " + LoginController.getUsername() + ".");
+        else if (state == GameModel.WinState.LOST)
+            winState.setValue("You lost, " + LoginController.getUsername() + ".");
+        else
+            winState.setValue("Draw: Time up, " + LoginController.getUsername() + ".");
+
+        XOApplication.switchScene(XOApplication.SceneLevel.MENU);
     }
 }

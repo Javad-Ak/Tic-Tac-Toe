@@ -4,6 +4,8 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -12,7 +14,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
 public class GameController {
-
     @FXML
     private ProgressBar timeBar;
 
@@ -50,28 +51,30 @@ public class GameController {
 
     private Label[][] labels;
 
+    private static BooleanProperty isGameStarted;
+
     @FXML
     public void initialize() {
+        isGameStarted = new SimpleBooleanProperty(false);
+        labels = new Label[][]{{label00, label01, label02}, {label10, label11, label12}, {label20, label21, label22}};
+
+        isGameStarted.addListener((observable, oldValue, newValue) -> {
+            if (newValue) setUp();
+        });
+
         soundToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) MusicPlayer.play();
             else MusicPlayer.pause();
         });
-
-        setUp();
     }
 
     public void setUp() {
-        labels = new Label[][]{{label00, label01, label02}, {label10, label11, label12}, {label20, label21, label22}};
         gameModel = new GameModel();
         for (int i = 0; i < labels.length; i++) {
             for (int j = 0; j < labels.length; j++) {
                 labels[i][j].textProperty().bind(gameModel.getBoard()[i][j]);
             }
         }
-
-        gameModel.getGameOverProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) MenuController.setGameOver(gameModel.getWinState());
-        });
 
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(timeBar.progressProperty(), 0)), // -> first frame
@@ -83,6 +86,12 @@ public class GameController {
         timeline.setAutoReverse(false);
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+
+        gameModel.getGameOverProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                endGame(gameModel.getWinState());
+            }
+        });
     }
 
     @FXML
@@ -134,8 +143,16 @@ public class GameController {
         if (!gameModel.isPlayerTurn() || !gameModel.getBoard()[x][y].isEqualTo("").get() || gameModel.getGameOverProperty().get())
             return;
 
-        gameModel.playerMoved();
-        gameModel.getBoard()[x][y].set("X");
-        gameModel.playerMoved();
+        gameModel.playerMove(x, y);
+    }
+
+    public static void startGame() {
+        isGameStarted.setValue(true);
+        XOApplication.switchScene(XOApplication.SceneLevel.GAME);
+    }
+
+    public static void endGame(GameModel.WinState state) {
+        isGameStarted.setValue(false);
+        MenuController.setGameOver(state);
     }
 }

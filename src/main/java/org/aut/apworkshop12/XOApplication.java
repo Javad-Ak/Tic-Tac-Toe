@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class XOApplication extends Application {
@@ -25,18 +26,18 @@ public class XOApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         menuScene = new Scene(new FXMLLoader(XOApplication.class.getResource("menu.fxml")).load());
-        loginScene = new Scene(new FXMLLoader(XOApplication.class.getResource("menu.fxml")).load());
-        gameScene = new Scene(new FXMLLoader(XOApplication.class.getResource("menu.fxml")).load());
+        loginScene = new Scene(new FXMLLoader(XOApplication.class.getResource("login.fxml")).load());
+        gameScene = new Scene(new FXMLLoader(XOApplication.class.getResource("game.fxml")).load());
 
         primaryStage = stage;
-        setScene(SceneLevel.MENU);
+        switchScene(SceneLevel.MENU);
         primaryStage.setTitle("Tic Tac Toe");
 
         setResponsiveUI();
         primaryStage.show();
     }
 
-    static void setScene(SceneLevel level) {
+    static void switchScene(SceneLevel level) {
         try {
             if (primaryStage == null || menuScene == null || gameScene == null || loginScene == null)
                 throw new IllegalStateException();
@@ -55,7 +56,10 @@ public class XOApplication extends Application {
         double width = Screen.getPrimary().getBounds().getWidth();
         double height = Screen.getPrimary().getBounds().getHeight();
 
-        primaryStage.getScene().getRoot().setStyle("-fx-font-size: " + (int) (20 * width * height / 1920 / 1080) + ";");
+        menuScene.getRoot().setStyle("-fx-font-size: " + (int) (20 * width * height / 1920 / 1080) + ";");
+        loginScene.getRoot().setStyle("-fx-font-size: " + (int) (20 * width * height / 1920 / 1080) + ";");
+        gameScene.getRoot().setStyle("-fx-font-size: " + (int) (100 * width * height / 1920 / 1080) + ";");
+
         primaryStage.setMinWidth(width / 1920 * 400);
         primaryStage.setMinHeight(height / 1080 * 500);
         primaryStage.setResizable(false);
