@@ -5,13 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class XOApplication extends Application {
-    private static final FXMLLoader menuFxml = new FXMLLoader(XOApplication.class.getResource("menu.fxml"));
-    private static final FXMLLoader loginFxml = new FXMLLoader(XOApplication.class.getResource("login.fxml"));
-    private static final FXMLLoader gameFxml = new FXMLLoader(XOApplication.class.getResource("game.fxml"));
+    private static Scene menuScene;
+    private static Scene loginScene;
+    private static Scene gameScene;
 
     private static Stage primaryStage;
 
@@ -24,7 +23,11 @@ public class XOApplication extends Application {
     }
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException {
+        menuScene = new Scene(new FXMLLoader(XOApplication.class.getResource("menu.fxml")).load());
+        loginScene = new Scene(new FXMLLoader(XOApplication.class.getResource("menu.fxml")).load());
+        gameScene = new Scene(new FXMLLoader(XOApplication.class.getResource("menu.fxml")).load());
+
         primaryStage = stage;
         setScene(SceneLevel.MENU);
         primaryStage.setTitle("Tic Tac Toe");
@@ -35,14 +38,15 @@ public class XOApplication extends Application {
 
     static void setScene(SceneLevel level) {
         try {
-            if (primaryStage == null) throw new IllegalStateException("No primary stage");
+            if (primaryStage == null || menuScene == null || gameScene == null || loginScene == null)
+                throw new IllegalStateException();
 
             switch (level) {
-                case MENU -> primaryStage.setScene(new Scene(menuFxml.load()));
-                case LOGIN -> primaryStage.setScene(new Scene(loginFxml.load()));
-                case GAME -> primaryStage.setScene(new Scene(gameFxml.load()));
+                case MENU -> primaryStage.setScene(menuScene);
+                case LOGIN -> primaryStage.setScene(loginScene);
+                case GAME -> primaryStage.setScene(gameScene);
             }
-        } catch (IOException | IllegalStateException e) {
+        } catch (IllegalStateException e) {
             System.exit(1);
         }
     }
